@@ -11,8 +11,9 @@ namespace ServiceLayer.Services.Interfaces
     public interface IDepartmentService
     {
         Task CreateAsync(DepartmentDto departmentDto);
-        Task DeleteAsync(int id);
 
+        Task UpdateAsync(int Id, DepartmentEditDto departmentEditDto);
+        Task DeleteAsync(int id);
         Task<List<DepartmentDto>> GetAllAsync();
     }
 }

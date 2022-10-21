@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories.Interfaces
 {
-    public interface IDepartmentRepository
+    public interface IDepartmentRepository:IRepository<Department>  
     {
-        public interface IDepartmentRepository : IRepository<Department>
-        {
-
-        }
+        
     }
 }

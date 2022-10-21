@@ -20,19 +20,33 @@ namespace ServiceLayer.Services
             _repository = repository;
             _mapper = mapper;
         }
+
         public async Task CreateAsync(DepartmentDto departmentDto)
         {
-           
+            var model = _mapper.Map<Department>(departmentDto);
+            await _repository.CreateAsync(model);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var student = await _repository.GetAsync(id);
+            await _repository.DeleteAsync(student);
         }
 
-        public Task<List<DepartmentDto>> GetAllAsync()
+        public async Task<List<DepartmentDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var model = await _repository.GetAllAsync();
+            var res = _mapper.Map<List<DepartmentDto>>(model);
+            return res;
+        }
+
+        public async Task UpdateAsync(int Id, DepartmentEditDto departmentEditDto)
+        {
+            var entity = await _repository.GetAsync(Id);
+
+            _mapper.Map(departmentEditDto, entity);
+
+            await _repository.UpdateAsync(entity);
         }
     }
 }

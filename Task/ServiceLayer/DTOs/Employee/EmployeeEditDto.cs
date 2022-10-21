@@ -16,6 +16,6 @@ namespace ServiceLayer.DTOs.Employee
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public int DepartmentId { get; set; }
-        public List<DepartmentDto> Departmens { get; set; }
+        
     }
 }

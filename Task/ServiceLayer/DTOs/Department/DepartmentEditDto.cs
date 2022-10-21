@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.DTOs.Department
 {
-    internal class DepartmentEditDto
+    public class DepartmentEditDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

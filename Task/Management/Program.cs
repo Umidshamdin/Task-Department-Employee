@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
+using ServiceLayer;
+using ServiceLayer.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +14,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+
+builder.Services.AddControllers();
+builder.Services.AddRepositoryLayer();
+builder.Services.AddServiceLayer();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddMvc();
 var app = builder.Build();
 
-
-builder.Services.AddRepositoryLayer();
-
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -30,10 +36,20 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
