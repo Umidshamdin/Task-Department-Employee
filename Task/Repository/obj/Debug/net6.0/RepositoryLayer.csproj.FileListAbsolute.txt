@@ -13,3 +13,5 @@ C:\Users\Umid\Desktop\Task-Management\Task\Repository\obj\Debug\net6.0\ref\Repos
 C:\Users\Umid\Desktop\Task-Management\Task\Repository\bin\Debug\net6.0\DomainLayer.dll
 C:\Users\Umid\Desktop\Task-Management\Task\Repository\bin\Debug\net6.0\DomainLayer.pdb
 C:\Users\Umid\Desktop\Task-Management\Task\Repository\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+C:\Users\Umid\Desktop\Task-Management\Task\Repository\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\Users\Umid\Desktop\Task-Management\Task\Repository\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
