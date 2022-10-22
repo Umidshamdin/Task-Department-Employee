@@ -1,0 +1,42 @@
+﻿@model EmployeeEditDto
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <form class="forms-sample mt-5" method="post" asp-controller="Employee" asp-action="Edit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="FullName">FullName:</label>
+            <input class="form-control" style="width:300px" asp-for="FullName">
+            <span class="text-danger" asp-validation-for="FullName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Age">Age:</label>
+            <input class="form-control" style="width:300px" asp-for="Age">
+            <span class="text-danger" asp-validation-for="Age"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber">Address:</label>
+            <input class="form-control" style="width:300px" asp-for="PhoneNumber">
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email:</label>
+            <input class="form-control" style="width:300px" asp-for="Email">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DepartmentId">DepartmentId:</label>
+            <input class="form-control" style="width:300px" asp-for="DepartmentId">
+            <span class="text-danger" asp-validation-for="DepartmentId"></span>
+        </div>
+        
+        <button style="margin-top:10px" class="btn btn-warning" asp-controller="Employee" asp-action="Edit" type="submit">Update</button>
+
+        <button style="margin-top:10px" class="btn btn-danger">
+            <a style="text-decoration:none;color:white" asp-action="Index">Cancel</a>
+        </button>
+    </form>
+</div>
+

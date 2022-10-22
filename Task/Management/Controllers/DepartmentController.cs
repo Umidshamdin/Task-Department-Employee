@@ -28,32 +28,31 @@ namespace Management.Controllers
 
         public async Task<IActionResult> Create(DepartmentDto departmentDto)
         {
-
             await _service.CreateAsync(departmentDto);
-            return RedirectToAction(nameof(Index));
-
-            
+            return RedirectToAction(nameof(Index));           
         }
         public async Task<IActionResult> Delete(int id)
         {
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        
+        }     
         public async Task<IActionResult> Edit(int id)
         {
             var result = await _service.GetByIdAsync(id);   
             return View(result);
         }
-
-
         [HttpPost]
         public async Task<IActionResult> Edit(DepartmentEditDto departmentEditDto)
         {
-
                 await _service.UpdateAsync(departmentEditDto.Id, departmentEditDto);
                 return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var detail = await _service.Detail(id);
+            return View(detail);
         }
     }
 }

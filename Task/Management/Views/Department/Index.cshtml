@@ -6,10 +6,19 @@
     int count = 1;
 }
 
-<h5>Departments</h5>
+<div class="head d-flex">
+    <h4>Departments</h4>
 
-<div class="create">
-    <div><a class="btn btn-success btn-sm my-4" asp-controller="Department" asp-action="Create">Create</a></div>
+    <h4 style="margin-left:20px">Employees</h4>
+</div>
+<div class="middle d-flex">
+    <div class="create">
+        <div><a class="btn btn-success btn-sm my-4" asp-controller="Department" asp-action="Create">Create</a></div>
+    </div>
+
+    <div style="margin-left:20px" class="employees">
+        <div><a class="btn btn-primary btn-sm my-4" asp-controller="Employee" asp-action="Index">Employees</a></div>
+    </div>
 </div>
 
 <div class="text-center mt-5">
@@ -33,8 +42,17 @@
                         <td>@item.Name</td>
                         <td>@item.Address</td>
                         <td>
-                            <button class="btn btn-primary">Detail</button>
-                                            <a class="btn btn-inverse-warning btn-sm" asp-controller="Department" asp-action="Edit" asp-route-Id="@item.Id">Edit<i class="mdi mdi-grease-pencil"></i></a>
+                            @*<button asp-controller="Employee" asp-action="Index" asp-route-Id="@item.Id" class="btn btn-primary">Detail</button>*@
+                            <button class="btn btn-primary">
+                                <a class="btn btn-inverse-warning btn-sm" asp-controller="Department" asp-action="Detail" asp-route-Id="@item.Id">Detail<i class="mdi mdi-grease-pencil"></i></a>
+
+                            </button>
+                            <button class="btn btn-warning">
+                                <a class="btn btn-inverse-warning btn-sm" asp-controller="Department" asp-action="Edit" asp-route-Id="@item.Id">Edit<i class="mdi mdi-grease-pencil"></i></a>
+
+
+                            </button>
+
                             
                             <form style="display:inline;" asp-action="Delete" asp-route-Id="@item.Id">
                                 <button type="submit" class="btn btn-danger btn-sm">Delete<i class="mdi mdi-delete-forever"></i></button>
@@ -42,9 +60,7 @@
                         </td>
                     </tr>
                     count++;
-                }
-       
-               
+                }              
             </tbody>
         </table>
     </div>

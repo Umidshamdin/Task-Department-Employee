@@ -15,6 +15,6 @@ namespace ServiceLayer.Services.Interfaces
         Task UpdateAsync(int Id, EmployeeEditDto employeeEditDto);
         Task DeleteAsync(int id);
         Task<List<EmployeeDto>> GetAllAsync();
-        Task<EmployeeDto> GetAsync(int id);
+        Task<EmployeeEditDto> GetAsync(int id);
     }
 }

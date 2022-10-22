@@ -1,0 +1,67 @@
+﻿@model List<EmployeeDto>
+
+
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+   
+}
+
+<h5>Employees</h5>
+
+<div class="create d-flex">
+    <div><a class="btn btn-success btn-sm my-4" asp-controller="Employee" asp-action="Create">Create</a></div>
+    <div><a class="btn btn-danger btn-sm my-4" asp-controller="Department" asp-action="Index">Back</a></div>
+
+</div>
+
+<div class="text-center mt-5">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>FullName</th>
+                    <th>Age</th>
+                    <th>PhoneNumber</th>
+                    <th>Email</th>
+                    <th>Department Id</th>
+
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@item.FullName</td>
+                        <td>@item.Age</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.Email</td>
+                        <td>
+                            @item.DepartmentId
+                        </td>
+
+
+                        <td>
+                            <button class="btn btn-warning">
+                                <a class="btn btn-inverse-warning btn-sm" asp-controller="Employee" asp-action="Edit" asp-route-Id="@item.Id">Edit<i class="mdi mdi-grease-pencil"></i></a>
+
+                            </button>
+
+                            <form style="display:inline;" asp-action="Delete" asp-route-Id="@item.Id">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete<i class="mdi mdi-delete-forever"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

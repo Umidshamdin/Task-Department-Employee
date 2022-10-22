@@ -1,0 +1,70 @@
+﻿@model DepartmentDto
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 1;
+}
+
+<h4 style="text-align:center">Department Detail</h4>
+<h5 style="color:green">Department Name: @Model.Name</h5>
+<h5 style="color:green">Department Address: @Model.Address</h5>
+
+<div class="text-center mt-5">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>FullName</th>
+                    <th>Age</th>
+                    <th>PhoneNumber</th>
+                    <th>Email</th>
+                    <th>Department Name</th>
+                    <th>
+                        Settings
+                    </th>
+                    <th>
+                        <button class="btn btn-success">
+                            <a style="text-decoration:none ;color:white" class="btn btn-link" asp-controller="Employee" asp-action="Create">
+                                Create Employee
+                            </a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a style="text-decoration:none ;color:white" class="btn btn-link" asp-controller="Department" asp-action="Index">
+                                Back
+                            </a>
+                        </button>
+                   
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Employees)
+                {
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@item.FullName</td>
+                        <td>@item.Age</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.Email</td>
+                        <td>@Model.Name</td>
+                        <td>
+                            <button class="btn btn-warning">
+                                <a style="color:white;text-decoration:none" asp-controller="Employee" asp-action="Edit" asp-route-Id="@item.Id">Edit<i class="mdi mdi-grease-pencil"></i></a>
+                            </button>
+
+                            <form style="display:inline;" asp-controller="Employee" asp-action="Delete" asp-route-Id="@item.Id">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete<i class="mdi mdi-delete-forever"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

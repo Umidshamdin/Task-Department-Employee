@@ -15,22 +15,16 @@ namespace RepositoryLayer.Repositories
         private readonly DbSet<Employee> entities;
         public EmployeeRepository(AppDbContext context) : base(context)
         {
-
             _context = context;
             entities = _context.Set<Employee>();
         }
-
         public async Task<IEnumerable<Employee>> GetEmployeesByDepartmentId(int departmentId)
         {
             return await entities.Where(x => x.DepartmentId == departmentId).ToListAsync();
         }
-
         public async Task<List<Employee>> GetAllEmployeesByDepartments()
         {
-
-
             return await entities.Where(c => c.SoftDelete == false).Include(c => c.Department).ToListAsync();
-
         }
     }
 }

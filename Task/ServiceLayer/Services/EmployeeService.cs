@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DomainLayer.Entities;
 using RepositoryLayer.Repositories.Interfaces;
+using ServiceLayer.DTOs.Department;
 using ServiceLayer.DTOs.Employee;
 using ServiceLayer.Services.Interfaces;
 using System;
@@ -39,10 +40,10 @@ namespace ServiceLayer.Services
             return res;
         }
 
-        public async Task<EmployeeDto> GetAsync(int id)
+        public async Task<EmployeeEditDto> GetAsync(int id)
         {
             var model = await _repository.GetAsync(id);
-            var res = _mapper.Map<EmployeeDto>(model);
+            var res = _mapper.Map<EmployeeEditDto>(model);
             return res;
         }
 
@@ -54,13 +55,15 @@ namespace ServiceLayer.Services
 
         //}
 
-        public async Task UpdateAsync(int Id, EmployeeEditDto employeeeditVM)
+        public async Task UpdateAsync(int Id, EmployeeEditDto employeeEditDto)
         {
             var entity = await _repository.GetAsync(Id);
 
-            _mapper.Map(employeeeditVM, entity);
+            _mapper.Map(employeeEditDto, entity);
 
             await _repository.UpdateAsync(entity);
         }
+
+        
     }
 }
