@@ -16,8 +16,10 @@
             <input class="form-control" style="width:300px" asp-for="Address">
             <span class="text-danger" asp-validation-for="Address"></span>
         </div>
-        <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <a asp-action="Index" class="btn btn-light">Cancel</a>
+        <button style="margin-top:10px" type="submit" class="btn btn-primary me-2">Submit</button>
+        <button style="margin-top:10px" class="btn btn-danger">
+            <a style="color:white;text-decoration:none" asp-action="Index">Cancel</a>
+        </button>
     </form>
 </div>
 

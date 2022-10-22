@@ -6,13 +6,17 @@
     int count = 1;
    
 }
-
-<h5>Employees</h5>
+<div class="head">
+    <h4 style="text-align:center">Employees</h4>
+</div>
 
 <div class="create d-flex">
-    <div><a class="btn btn-success btn-sm my-4" asp-controller="Employee" asp-action="Create">Create</a></div>
-    <div><a class="btn btn-danger btn-sm my-4" asp-controller="Department" asp-action="Index">Back</a></div>
-
+    <div>
+        <a class="btn btn-success" asp-controller="Employee" asp-action="Create">Create</a>
+    </div>
+    <div style="margin-left:10px" class="buttonsHeader">
+       <a class="btn btn-danger" asp-controller="Department" asp-action="Index">Back</a>
+    </div>
 </div>
 
 <div class="text-center mt-5">
@@ -25,7 +29,7 @@
                     <th>Age</th>
                     <th>PhoneNumber</th>
                     <th>Email</th>
-                    <th>Department Id</th>
+                    <th>Department Name</th>
 
                     <th>
                         Settings
@@ -42,7 +46,7 @@
                         <td>@item.PhoneNumber</td>
                         <td>@item.Email</td>
                         <td>
-                            @item.DepartmentId
+                            @item.Department.Name
                         </td>
 
 
@@ -53,7 +57,7 @@
                             </button>
 
                             <form style="display:inline;" asp-action="Delete" asp-route-Id="@item.Id">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete<i class="mdi mdi-delete-forever"></i></button>
+                                <button type="submit" class="btn btn-danger">Delete<i class="mdi mdi-delete-forever"></i></button>
                             </form>
                         </td>
                     </tr>
