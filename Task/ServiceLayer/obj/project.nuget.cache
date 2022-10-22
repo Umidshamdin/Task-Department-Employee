@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0vbXLbRLUX4+V4pDNV0vN8heTMbomx7Ep1EJ8ju7s2e9Kdfz+7RQwnslDAiLXKl0/hLIBP/8dcuUncHwgjNXIA==",
+  "dgSpecHash": "Fb3Q4yjtXh4VjQPmE1EUkrH89Y3c7UCAFziUdoPJUB0wbksPYXYfRy8TZVEVWTGM9akL6ijKpMbvPBCfJrDiWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Umid\\Desktop\\Task-Management\\Task\\ServiceLayer\\ServiceLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Umid\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Umid\\.nuget\\packages\\fluentvalidation\\11.2.2\\fluentvalidation.11.2.2.nupkg.sha512",
+    "C:\\Users\\Umid\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\Umid\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.2\\fluentvalidation.dependencyinjectionextensions.11.2.2.nupkg.sha512",
     "C:\\Users\\Umid\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.10\\microsoft.aspnetcore.cryptography.internal.6.0.10.nupkg.sha512",
     "C:\\Users\\Umid\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.10\\microsoft.aspnetcore.cryptography.keyderivation.6.0.10.nupkg.sha512",
     "C:\\Users\\Umid\\.nuget\\packages\\microsoft.aspnetcore.hosting\\2.2.7\\microsoft.aspnetcore.hosting.2.2.7.nupkg.sha512",

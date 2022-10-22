@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using ServiceLayer.DTOs.Department;
 using ServiceLayer.Services;
 using ServiceLayer.Services.Interfaces;
 using System;
@@ -18,6 +20,8 @@ namespace ServiceLayer
             services.AddScoped<IEmployeeService, EmployeeService>();
 
             services.AddHttpContextAccessor();
+            services.AddTransient<IValidator<DepartmentDto>, DepartmentCreateValidator>();
+
 
             return services;
         }
