@@ -25,9 +25,12 @@ namespace Management.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> Create(DepartmentDto departmentDto)
         {
+            //if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
             await _service.CreateAsync(departmentDto);
             return RedirectToAction(nameof(Index));           
         }

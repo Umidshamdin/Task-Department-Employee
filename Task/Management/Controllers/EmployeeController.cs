@@ -27,8 +27,16 @@ namespace Management.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(EmployeeDto employeeDto)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = await _departmentService.GetAllAsync();
+                ViewBag.Departments = departments;
+                return View();
+            }
+
             await _service.CreateAsync(employeeDto);
             return Redirect("https://localhost:7126/Department/Detail/" + employeeDto.DepartmentId);
         }
