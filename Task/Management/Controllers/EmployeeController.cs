@@ -23,12 +23,12 @@ namespace Management.Controllers
         public async Task<IActionResult> Create()
         {
             var departments = await _departmentService.GetAllAsync();
-            ViewBag.Department = departments;
+            ViewBag.Departments = departments;
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(EmployeeDto employeeDto)
+        public async Task<IActionResult> Create(EmployeeCreateDto employeeDto)
         {
             if (!ModelState.IsValid)
             {

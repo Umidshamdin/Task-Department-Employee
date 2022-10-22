@@ -21,7 +21,7 @@ namespace ServiceLayer.Services
             _repository = repository;
             _mapper = mapper;
         }
-        public async Task CreateAsync(EmployeeDto employeeDto)
+        public async Task CreateAsync(EmployeeCreateDto employeeDto)
         {
             var model = _mapper.Map<Employee>(employeeDto);
             await _repository.CreateAsync(model);

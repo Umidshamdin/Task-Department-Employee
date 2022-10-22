@@ -14,13 +14,11 @@ namespace ServiceLayer.Mapping
     {
         public MappingProfile()
         {
-
-
             CreateMap<Department, DepartmentDto>().ReverseMap();
             CreateMap<Department, DepartmentEditDto>().ReverseMap();
             CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Employee, EmployeeCreateDto>().ReverseMap();
             CreateMap<Employee, EmployeeEditDto>().ReverseMap();
-
         }
     }
 }

@@ -31,12 +31,11 @@
             <label asp-for="DepartmentId">Departments:</label>
 
             <select asp-for="DepartmentId" >
-                @foreach (var item in ViewBag.Department)
+                @foreach (var item in ViewBag.Departments)
                 {
                     <option value=@item.Id>@item.Name</option>
                 }
             </select>
-            <span class="text-danger" asp-validation-for="DepartmentId"></span>
 
         </div>
         

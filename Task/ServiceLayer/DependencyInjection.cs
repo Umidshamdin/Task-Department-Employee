@@ -16,18 +16,11 @@ namespace ServiceLayer
     {
          public static IServiceCollection AddServiceLayer(this IServiceCollection services)
         {
-
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
-
             services.AddHttpContextAccessor();
-
-
             services.AddTransient<IValidator<DepartmentDto>, DepartmentCreateValidator>();
-            services.AddTransient<IValidator<EmployeeDto>, EmployeeCreateValidator>();
-
-
-
+            services.AddTransient<IValidator<EmployeeCreateDto>, EmployeeCreateValidator>();
             return services;
         }
     }

@@ -23,26 +23,23 @@ namespace ServiceLayer.DTOs.Employee
         public string? PhoneNumber { get; set; }
 
         [Required]
-        public string Email { get; set; }
+        public string? Email { get; set; }
     
         public int DepartmentId { get; set; }
      
-        public DepartmentDto Department { get; set; }
+        public DepartmentDto? Department { get; set; }
 
         public List<DepartmentDto>? Departmens { get; set; }
-
-
     }
-    public class EmployeeCreateValidator : AbstractValidator<EmployeeDto>
+    public class EmployeeCreateValidator : AbstractValidator<EmployeeCreateDto>
     {
         public EmployeeCreateValidator()
         {
-            RuleFor(m => m.FullName).NotEmpty().WithMessage("Pleace add name").MinimumLength(4);
-            RuleFor(m => m.Age).NotEmpty().WithMessage("Pleace add address");
-            RuleFor(m => m.PhoneNumber).NotEmpty().WithMessage("Pleace add address");
-            RuleFor(m => m.Email).NotEmpty().WithMessage("Pleace add address");
+            RuleFor(m => m.FullName).NotEmpty().WithMessage("Pleace add fullname").MinimumLength(4);
+            RuleFor(m => m.Age).NotEmpty().WithMessage("Pleace add age");
+            RuleFor(m => m.PhoneNumber).NotEmpty().WithMessage("Pleace add phonenumber");
+            RuleFor(m => m.Email).NotEmpty().WithMessage("Pleace add email");
             RuleFor(m => m.DepartmentId).NotEmpty().WithMessage("Pleace add address");
-
         }
     }
 }

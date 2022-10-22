@@ -10,7 +10,7 @@ namespace ServiceLayer.Services.Interfaces
 {
     public interface IEmployeeService
     {
-        Task CreateAsync(EmployeeDto employeeDto);
+        Task CreateAsync(EmployeeCreateDto employeeDto);
 
         Task UpdateAsync(int Id, EmployeeEditDto employeeEditDto);
         Task DeleteAsync(int id);
