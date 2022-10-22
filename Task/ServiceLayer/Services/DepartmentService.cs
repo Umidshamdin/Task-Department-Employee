@@ -48,5 +48,13 @@ namespace ServiceLayer.Services
 
             await _repository.UpdateAsync(entity);
         }
+       
+
+        public async Task<DepartmentEditDto> GetByIdAsync(int id)
+        {
+            var model = await _repository.GetAsync(id);
+            var res = _mapper.Map<DepartmentEditDto>(model);
+            return res;
+        }
     }
 }

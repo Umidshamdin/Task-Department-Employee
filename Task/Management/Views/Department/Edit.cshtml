@@ -1,0 +1,15 @@
+﻿@model DepartmentEditDto
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post" asp-action="Edit">
+        <input type="hidden" asp-for="Id" value=@Model.Id />
+        <input value=@Model.Name asp-for="Name" />
+        <input value=@Model.Address asp-for="Address" />
+        <button asp-controller="Department" asp-action="Edit" type="submit">Update</button>
+    </form>
+</div>
+
