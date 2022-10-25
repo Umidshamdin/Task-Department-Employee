@@ -48,7 +48,7 @@ namespace ServiceLayer.Services
 
             await _repository.UpdateAsync(entity);
         }
-       
+
 
         public async Task<DepartmentEditDto> GetByIdAsync(int id)
         {

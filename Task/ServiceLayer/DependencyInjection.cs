@@ -19,6 +19,7 @@ namespace ServiceLayer
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddHttpContextAccessor();
+
             services.AddTransient<IValidator<DepartmentDto>, DepartmentCreateValidator>();
             services.AddTransient<IValidator<EmployeeCreateDto>, EmployeeCreateValidator>();
             return services;

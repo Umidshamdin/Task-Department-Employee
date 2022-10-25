@@ -19,6 +19,12 @@ namespace RepositoryLayer.Repositories
             _context = context;
             entities = context.Set<Department>();
         }
+
+        public async Task<Department> GetDepartmentById(int id)
+        {
+           return await entities.Include(m => m.Employees).FirstOrDefaultAsync();
+        }
+
         public async Task<Department> GetDepartmentDetail(int id)
         {
             var detail = await entities

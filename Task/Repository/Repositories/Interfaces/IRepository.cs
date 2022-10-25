@@ -15,6 +15,7 @@ namespace RepositoryLayer.Repositories.Interfaces
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
+
         //Task SoftDeleteAsync(T entity);
         //Task<T> FindAsync(Expression<Func<T, bool>> predicate);
         //Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate);
