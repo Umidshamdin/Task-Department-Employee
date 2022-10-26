@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ServiceLayer.DTOs.Department;
 using ServiceLayer.DTOs.Employee;
 using ServiceLayer.Services.Interfaces;
 
@@ -16,7 +14,7 @@ namespace Management.Controllers
             _departmentService = departmentService;
         }
         public async Task<IActionResult> Index()
-        {         
+        {
             return View(await _service.GetAllAsync());
         }
 

@@ -12,8 +12,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221021183201_CreateDepartmentAndEmployeeTables")]
-    partial class CreateDepartmentAndEmployeeTables
+    [Migration("20221026074635_CreateTables")]
+    partial class CreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,12 +39,15 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("CreateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 10, 21, 22, 32, 1, 313, DateTimeKind.Local).AddTicks(2797));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 11, 46, 35, 365, DateTimeKind.Local).AddTicks(2681));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("ParentDepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("SoftDelete")
                         .ValueGeneratedOnAdd()
@@ -52,6 +55,8 @@ namespace RepositoryLayer.Migrations
                         .HasDefaultValue(false);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentDepartmentId");
 
                     b.ToTable("Department");
                 });
@@ -70,7 +75,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("CreateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 10, 21, 22, 32, 1, 313, DateTimeKind.Local).AddTicks(3442));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 11, 46, 35, 365, DateTimeKind.Local).AddTicks(3559));
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
@@ -101,6 +106,15 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Employee");
                 });
 
+            modelBuilder.Entity("DomainLayer.Entities.Department", b =>
+                {
+                    b.HasOne("DomainLayer.Entities.Department", "ParentDepartment")
+                        .WithMany("ChildDepartment")
+                        .HasForeignKey("ParentDepartmentId");
+
+                    b.Navigation("ParentDepartment");
+                });
+
             modelBuilder.Entity("DomainLayer.Entities.Employee", b =>
                 {
                     b.HasOne("DomainLayer.Entities.Department", "Department")
@@ -114,6 +128,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Entities.Department", b =>
                 {
+                    b.Navigation("ChildDepartment");
+
                     b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618

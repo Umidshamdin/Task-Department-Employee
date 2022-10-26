@@ -1,10 +1,5 @@
 ﻿using DomainLayer.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories
 {
@@ -39,9 +34,8 @@ namespace RepositoryLayer.Repositories
             return await entities.Where(m => m.SoftDelete == false).OrderByDescending(m => m.Id).ToListAsync();
         }
 
-        public async Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(int? id)
         {
-
             T entity = await entities.FirstOrDefaultAsync(m => m.Id == id);
 
             if (entity is null) throw new NullReferenceException();

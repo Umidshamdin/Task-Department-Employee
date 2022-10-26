@@ -1,12 +1,6 @@
-﻿using DomainLayer.Entities;
-using FluentValidation;
+﻿using FluentValidation;
 using ServiceLayer.DTOs.Employee;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceLayer.DTOs.Department
 {
@@ -18,16 +12,16 @@ namespace ServiceLayer.DTOs.Department
         [Required]
         public string? Address { get; set; }
         public List<EmployeeDto>? Employees { get; set; }
-
-
-
+        public int? ParentDepartmentId { get; set; } = null;
+        public DepartmentDto? ParentDepartment { get; set; }    
+      
     }
     public class DepartmentCreateValidator : AbstractValidator<DepartmentDto>
     {
         public DepartmentCreateValidator()
         {
             RuleFor(m => m.Name).NotEmpty().WithMessage("Pleace add name").MinimumLength(4);
-            RuleFor(m => m.Address).NotEmpty().WithMessage("Pleace add address");
+            RuleFor(m => m.Address).NotEmpty().WithMessage("Pleace add address").MinimumLength(4);
         }
     }
 }

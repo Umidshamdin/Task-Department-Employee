@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RepositoryLayer.Repositories.Interfaces;
 using RepositoryLayer.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RepositoryLayer.Repositories.Interfaces;
 
 namespace RepositoryLayer
 {

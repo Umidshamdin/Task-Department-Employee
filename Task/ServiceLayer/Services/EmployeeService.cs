@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
 using DomainLayer.Entities;
 using RepositoryLayer.Repositories.Interfaces;
-using ServiceLayer.DTOs.Department;
 using ServiceLayer.DTOs.Employee;
 using ServiceLayer.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceLayer.Services
 {
@@ -36,6 +30,7 @@ namespace ServiceLayer.Services
         public async Task<List<EmployeeDto>> GetAllAsync()
         {
             var model = await _repository.GetAllEmployeesByDepartments();
+
             var res = _mapper.Map<List<EmployeeDto>>(model);
             return res;
         }
@@ -64,6 +59,6 @@ namespace ServiceLayer.Services
             await _repository.UpdateAsync(entity);
         }
 
-        
+
     }
 }

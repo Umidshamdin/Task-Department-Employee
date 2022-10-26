@@ -1,10 +1,4 @@
-﻿using DomainLayer.Entities;
-using ServiceLayer.DTOs.Employee;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ServiceLayer.DTOs.Employee;
 
 namespace ServiceLayer.Services.Interfaces
 {

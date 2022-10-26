@@ -37,7 +37,7 @@
                         <th scope="row">@count</th>
                         <td>@item.Name</td>
                         <td>@item.Address</td>
-                        <td>                   
+                        <td>
                             <button class="btn btn-primary">
                                 <a style="color:white;text-decoration:none" asp-controller="Department" asp-action="Detail" asp-route-Id="@item.Id">Detail<i class="mdi mdi-grease-pencil"></i></a>
 
@@ -45,16 +45,15 @@
                             <button class="btn btn-warning">
                                 <a style="color:white;text-decoration:none" asp-controller="Department" asp-action="Edit" asp-route-Id="@item.Id">Edit<i class="mdi mdi-grease-pencil"></i></a>
                             </button>
-                            
+
                             <form style="display:inline;" asp-action="Delete" asp-route-Id="@item.Id">
                                 <button type="submit" class="btn btn-danger">Delete<i class="mdi mdi-delete-forever"></i></button>
                             </form>
                         </td>
                     </tr>
                     count++;
-                }              
+                }
             </tbody>
         </table>
     </div>
 </div>
-

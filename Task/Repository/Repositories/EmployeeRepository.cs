@@ -1,11 +1,6 @@
 ﻿using DomainLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories
 {
@@ -20,7 +15,8 @@ namespace RepositoryLayer.Repositories
         }
         public async Task<IEnumerable<Employee>> GetEmployeesByDepartmentId(int departmentId)
         {
-            return await entities.Where(x => x.DepartmentId == departmentId).ToListAsync();
+
+            return await entities.Where(x => x.DepartmentId == departmentId).Where(c => c.SoftDelete == false).Include(c => c.Department).ToListAsync();
         }
         public async Task<List<Employee>> GetAllEmployeesByDepartments()
         {

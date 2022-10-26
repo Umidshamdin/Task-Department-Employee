@@ -1,12 +1,5 @@
-﻿using DomainLayer.Entities;
-using FluentValidation;
-using ServiceLayer.DTOs.Department;
-using System;
-using System.Collections.Generic;
+﻿using ServiceLayer.DTOs.Department;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceLayer.DTOs.Employee
 {
@@ -24,9 +17,9 @@ namespace ServiceLayer.DTOs.Employee
 
         [Required]
         public string? Email { get; set; }
-    
+
         public int DepartmentId { get; set; }
-     
+
         public DepartmentDto? Department { get; set; }
 
         public List<DepartmentDto>? Departmens { get; set; }

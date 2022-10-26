@@ -16,6 +16,17 @@
             <input class="form-control" style="width:300px" asp-for="Address">
             <span class="text-danger" asp-validation-for="Address"></span>
         </div>
+        <div style="margin-top:10px" class="form-group">
+            <select asp-for="ParentDepartmentId">
+                @foreach (var item in ViewBag.Departments)
+                {
+                    if(item.Id != Model.Id)
+                    {
+                        <option value=@item.Id>@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
         <br />
         <button class="btn btn-warning" asp-controller="Department" asp-action="Edit" type="submit">Update</button>
         <button class="btn btn-danger">

@@ -1,8 +1,7 @@
-﻿using DomainLayer.Entities;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.DTOs.Department;
-using ServiceLayer.Services;
 using ServiceLayer.Services.Interfaces;
+
 
 namespace Management.Controllers
 {
@@ -19,8 +18,10 @@ namespace Management.Controllers
             return View(result);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var departments = await _service.GetAllAsync();
+            ViewBag.Departments = departments;
             return View();
         }
 
@@ -29,26 +30,35 @@ namespace Management.Controllers
 
         public async Task<IActionResult> Create(DepartmentDto departmentDto)
         {
+            var departments = await _service.GetAllAsync();
+            ViewBag.Departments = departments;
+
             //if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
             if (!ModelState.IsValid) return View();
+
+
             await _service.CreateAsync(departmentDto);
-            return RedirectToAction(nameof(Index));           
+
+
+            return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Delete(int id)
         {
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }     
+        }
         public async Task<IActionResult> Edit(int id)
         {
-            var result = await _service.GetByIdAsync(id);   
+            var departments = await _service.GetAllAsync();
+            ViewBag.Departments = departments;
+            var result = await _service.GetByIdAsync(id);
             return View(result);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(DepartmentEditDto departmentEditDto)
         {
-                await _service.UpdateAsync(departmentEditDto.Id, departmentEditDto);
-                return RedirectToAction(nameof(Index));
+            await _service.UpdateAsync(departmentEditDto.Id, departmentEditDto);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]

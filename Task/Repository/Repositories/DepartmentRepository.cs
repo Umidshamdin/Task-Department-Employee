@@ -1,12 +1,6 @@
 ﻿using DomainLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using RepositoryLayer.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories
 {
@@ -22,16 +16,17 @@ namespace RepositoryLayer.Repositories
 
         public async Task<Department> GetDepartmentById(int id)
         {
-           return await entities.Include(m => m.Employees).FirstOrDefaultAsync();
+            return await entities.Where(m => m.Id == id).Include(m => m.Employees.Where(x => x.SoftDelete == false)).FirstOrDefaultAsync();
         }
 
         public async Task<Department> GetDepartmentDetail(int id)
         {
             var detail = await entities
                                 .Where(e => e.Id == id)
+                                .Include(x => x.ParentDepartment)
                                 .Include(m => m.Employees.Where(x => x.SoftDelete == false))
                                 .FirstOrDefaultAsync();
-            return detail;                                  
+            return detail;
         }
     }
 }

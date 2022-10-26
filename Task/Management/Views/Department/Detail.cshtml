@@ -8,9 +8,21 @@
 <h4 style="text-align:center">Department Detail</h4>
 <h5 style="color:green">Department Name: @Model.Name</h5>
 <h5 style="color:green">Department Address: @Model.Address</h5>
+<h4>
+    Parrent: @if (@Model.ParentDepartment != null)
+    {
+        @Model.ParentDepartment?.Name
+    }
+    else
+    {
+        <span style="color:red">No Parent Department</span>
+    }
+</h4>
 
 <div class="text-center mt-5">
     <div class="row">
+
+        <h5 style="color:green">Department Employees</h5>
         <table class="table">
             <thead>
                 <tr>
@@ -34,7 +46,7 @@
                                 Back
                             </a>
                         </button>
-                   
+
                     </th>
                 </tr>
             </thead>
@@ -64,7 +76,3 @@
         </table>
     </div>
 </div>
-
-
-
-
